@@ -1,0 +1,22 @@
+{
+    "configurations": [
+        {
+            "name": "Linux",
+            "includePath": [
+                "${workspaceFolder}/**",
+                "${workspaceFolder}/app/KelpBar/ui",
+                "${workspaceFolder}/app/KelpBar/res/font",
+                "${workspaceFolder}/app/WheelPanel/res/music",
+                "${workspaceFolder}/app/KelpBar/res",
+                "${workspaceFolder}/app/KelpBar/ui/data",
+                "${workspaceFolder}/app/KelpBar/ui/utils"
+            ],
+            "defines": [],
+            "compilerPath": "/usr/bin/clang",
+            "cStandard": "c17",
+            "cppStandard": "c++14",
+            "intelliSenseMode": "linux-clang-x64"
+        }
+    ],
+    "version": 4
+}
