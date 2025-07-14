@@ -11,7 +11,6 @@
 #include <stdlib.h>
 #include <stdio.h>
 #include "lvgl.h"
-// #include "demos/lv_demos.h"
 #include "font_conf.h"
 #include "page_conf.h"
 #include "device_data.h"
