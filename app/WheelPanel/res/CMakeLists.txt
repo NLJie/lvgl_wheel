@@ -1,4 +1,4 @@
 
 file(COPY font DESTINATION .)
-file(COPY image DESTINATION .)
+file(COPY image_800x480 DESTINATION .)
 file(COPY music DESTINATION .)

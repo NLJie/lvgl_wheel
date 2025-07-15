@@ -1,5 +1,6 @@
 {
     "files.associations": {
-        "page_conf.h": "c"
+        "page_conf.h": "c",
+        "device_data.h": "c"
     }
 }

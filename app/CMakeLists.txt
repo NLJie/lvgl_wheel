@@ -26,7 +26,7 @@ target_include_directories(demo PRIVATE
                         ${UI_VARIANT}/res/color/
                         ${UI_VARIANT}/res/font/
                         ${UI_VARIANT}/res/music/
-                        ${UI_VARIANT}/res/image/
+                        ${UI_VARIANT}/res/image_800x480/
                         ${CMAKE_SOURCE_DIR}/lvgl
                         ${CMAKE_SOURCE_DIR}/lvgl/src
                         ${CMAKE_SOURCE_DIR}/component/hal

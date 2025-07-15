@@ -20,6 +20,14 @@
 #include <time.h>
 #include <sys/time.h>
 
+static lv_obj_t * g_main_bg = NULL;
+static lv_obj_t * bg_img = NULL;
+static lv_obj_t * bg_img1 = NULL;
+
+static lv_obj_t * top_info_bar = NULL;
+static lv_obj_t * bot_info_bar = NULL;
+static lv_obj_t * ready_img = NULL;
+
 static lv_obj_t * time_label = NULL;
 static lv_obj_t * weather_label = NULL;
 static lv_obj_t *wifi_img = NULL;
@@ -186,6 +194,7 @@ static void time_sync_click_event_cb(lv_event_t * e){
 
 static void screen_click_event_cb(lv_event_t * e){
     printf("screen_click_event_cb\n");
+    lv_img_set_src(bg_img,GET_IMAGE_PATH("g_bg_white.png"));
     sleep_time_count = 0;
 }
 
@@ -376,37 +385,59 @@ static lv_obj_t *init_scroll_view(){
     init_page_pulldowm_view(scroll_view);
 }
 
-static void init_status_icon(lv_obj_t *parent){
-    wifi_img = lv_img_create(parent);
-    if(get_device_state()->wifi_connect_state == WPA_WIFI_CONNECT){
-        lv_img_set_src(wifi_img,GET_IMAGE_PATH("icon_wifi_connect.png"));
-    }else{
-        lv_img_set_src(wifi_img,GET_IMAGE_PATH("icon_wifi_disconnect.png"));
+static void init_top_status_icon(lv_obj_t *parent){
+    top_info_bar = lv_obj_create(parent);
+    lv_obj_remove_style_all(top_info_bar);
+
+    lv_obj_set_width(top_info_bar, LV_PCT(100));
+    lv_obj_set_height(top_info_bar, 55);
+    lv_obj_set_style_bg_color(top_info_bar, lv_color_make(0, 255, 0), LV_PART_MAIN|LV_STATE_DEFAULT);
+
+    // 设置样式
+    static lv_style_t info_style;
+    lv_style_init(&info_style);
+    // lv_style_set_bg_color(&info_style, lv_color_make(0, 255, 0));   // 背景绿色
+    lv_style_set_bg_opa(&info_style, LV_OPA_COVER);         // 背景不透明
+    lv_style_set_radius(&info_style, 0);                    // 无圆角（可选）
+    lv_style_set_border_width(&info_style, 0);              // 无边框（可选）
+    lv_style_set_pad_all(&info_style, 0);                   // 内边距为0（可选）
+    lv_style_set_align(&info_style, LV_ALIGN_TOP_MID);
+
+    // 应用样式
+    lv_obj_add_style(top_info_bar, &info_style, LV_PART_MAIN);
+
+    ready_img = lv_img_create(top_info_bar);
+    lv_img_set_src(ready_img,GET_IMAGE_PATH("g_ready.png"));
+    lv_obj_align(ready_img,LV_ALIGN_CENTER, 0, 0);
+}
+
+static void init_bot_status_icon(lv_obj_t *parent){
+    if(1){
+
     }
-    lv_obj_set_align(wifi_img,LV_ALIGN_TOP_RIGHT);
-    lv_obj_set_style_pad_right(wifi_img,40,LV_PART_MAIN);
-    lv_obj_set_style_pad_top(wifi_img,10,LV_PART_MAIN);
+    bot_info_bar = lv_obj_create(parent);
+    lv_obj_remove_style_all(bot_info_bar);
 
-    ble_img = lv_img_create(parent);
-    lv_img_set_src(ble_img,GET_IMAGE_PATH("icon_ble_disconnect.png"));
-    lv_obj_align_to(ble_img,wifi_img,LV_ALIGN_OUT_LEFT_BOTTOM,-10,0);
+    lv_obj_set_width(bot_info_bar, LV_PCT(100));
+    lv_obj_set_height(bot_info_bar, 55);
+    lv_obj_set_style_bg_color(bot_info_bar, lv_color_make(0, 255, 0), LV_PART_MAIN|LV_STATE_DEFAULT);
 
-    vol_img = lv_img_create(parent);
-    if(get_device_state()->volume_value == 0){
-        lv_img_set_src(vol_img,GET_IMAGE_PATH("icon_volx.png"));
-    }else{
-        lv_img_set_src(vol_img,GET_IMAGE_PATH("icon_vol.png"));
-    }
-    lv_obj_align_to(vol_img,ble_img,LV_ALIGN_OUT_LEFT_BOTTOM,-10,0);
+    // 设置样式
+    static lv_style_t info_style;
+    lv_style_init(&info_style);
+    // lv_style_set_bg_color(&info_style, lv_color_make(0, 255, 0));   // 背景绿色
+    lv_style_set_bg_opa(&info_style, LV_OPA_TRANSP);         // 背景不透明
+    lv_style_set_radius(&info_style, 0);                    // 无圆角（可选）
+    lv_style_set_border_width(&info_style, 0);              // 无边框（可选）
+    lv_style_set_pad_all(&info_style, 0);                   // 内边距为0（可选）
+    lv_style_set_align(&info_style, LV_ALIGN_BOTTOM_MID);
 
-    alarm_img = lv_img_create(parent);
-    if(get_device_state()->is_open_type1 == true || get_device_state()->is_open_type2 == true){
-        lv_img_set_src(alarm_img,GET_IMAGE_PATH("icon_alarm_state.png"));
-    }else{
-        lv_img_set_src(alarm_img,GET_IMAGE_PATH(""));
-    }
-    lv_obj_align_to(alarm_img,vol_img,LV_ALIGN_OUT_LEFT_BOTTOM,-10,0);
+    // 应用样式
+    lv_obj_add_style(bot_info_bar, &info_style, LV_PART_MAIN);
 
+    ready_img = lv_img_create(bot_info_bar);
+    lv_img_set_src(ready_img,GET_IMAGE_PATH("g_ready.png"));
+    lv_obj_align(ready_img,LV_ALIGN_CENTER, 0, -8);    
 }
 
 void init_page_main(void)
@@ -417,20 +448,26 @@ void init_page_main(void)
     get_system_time();
 
     com_style_init();
-    lv_obj_t * cont = lv_obj_create(lv_scr_act());
-    lv_obj_set_size(cont, LV_PCT(100), LV_PCT(100));
-    lv_obj_center(cont);
-    lv_obj_add_style(cont, &com_style, 0);
-    lv_obj_clear_flag(cont,LV_OBJ_FLAG_SCROLLABLE);
-    lv_obj_add_flag(cont,LV_OBJ_FLAG_CLICKABLE);
-    lv_obj_add_event_cb(cont,screen_click_event_cb,LV_EVENT_CLICKED,NULL);
+    g_main_bg = lv_obj_create(lv_scr_act());
+    lv_obj_set_size(g_main_bg, LV_PCT(100), LV_PCT(100));
+    lv_obj_center(g_main_bg);
+    lv_obj_add_style(g_main_bg, &com_style, 0);
+    lv_obj_clear_flag(g_main_bg,LV_OBJ_FLAG_SCROLLABLE);
+    lv_obj_add_flag(g_main_bg,LV_OBJ_FLAG_CLICKABLE);
+    lv_obj_add_event_cb(g_main_bg,screen_click_event_cb,LV_EVENT_CLICKED,NULL);
 
-    lv_obj_t * bg_img = lv_img_create(cont);
+    bg_img = lv_img_create(g_main_bg);
     lv_img_set_src(bg_img,GET_IMAGE_PATH("g_bg_black.png"));
-    lv_obj_align(bg_img,LV_ALIGN_RIGHT_MID,-2,0);
 
-    lv_obj_t * bg_img1 = lv_img_create(cont);
+    bg_img1 = lv_img_create(g_main_bg);
     lv_img_set_src(bg_img1,GET_IMAGE_PATH("g_bg_gogogo.png"));
     lv_obj_align(bg_img1,LV_ALIGN_CENTER,0,0);    
-   
+
+    lv_obj_t *title = lv_label_create(g_main_bg);
+    obj_font_set(title,FONT_TYPE_LETTER, FONT_SIZE_TEXT_1);
+    lv_obj_set_pos(title, 25, 431);
+    lv_label_set_text(title,"标准");
+    
+    init_top_status_icon(g_main_bg);
+    init_bot_status_icon(g_main_bg);
 }
