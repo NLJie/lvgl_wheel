@@ -426,7 +426,11 @@ void init_page_main(void)
     lv_obj_add_event_cb(cont,screen_click_event_cb,LV_EVENT_CLICKED,NULL);
 
     lv_obj_t * bg_img = lv_img_create(cont);
-    lv_img_set_src(bg_img,GET_IMAGE_PATH("main_theme1_bg.png"));
-    lv_obj_align(bg_img,LV_ALIGN_RIGHT_MID,-2,0);    
+    lv_img_set_src(bg_img,GET_IMAGE_PATH("g_bg_black.png"));
+    lv_obj_align(bg_img,LV_ALIGN_RIGHT_MID,-2,0);
+
+    lv_obj_t * bg_img1 = lv_img_create(cont);
+    lv_img_set_src(bg_img1,GET_IMAGE_PATH("g_bg_gogogo.png"));
+    lv_obj_align(bg_img1,LV_ALIGN_CENTER,0,0);    
    
 }

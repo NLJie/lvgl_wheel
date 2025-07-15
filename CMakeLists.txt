@@ -2,8 +2,8 @@ cmake_minimum_required(VERSION 3.15)
 
 project(app VERSION 1.0)
 
-set(UI_VARIANT KelpBar)
-# set(UI_VARIANT WheelPanel)
+# set(UI_VARIANT KelpBar)
+set(UI_VARIANT WheelPanel)
 
 if(SIMULATOR_LINUX)
     message("building linux x86")

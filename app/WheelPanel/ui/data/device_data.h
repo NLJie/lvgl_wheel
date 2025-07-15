@@ -38,12 +38,17 @@ typedef enum{
 
 typedef struct{
 
+    CONNECT_STATE_E bt_connect_state;
+    
     CONNECT_STATE_E ble_mesh_state; //ble mesh模组连接状态
     CONNECT_STATE_E led_connect_state;
     CONNECT_STATE_E switch_connect_state;
     CONNECT_STATE_E body_sensor_connect_state;
     CONNECT_STATE_E smart_coaster_connect_state;
     CONNECT_STATE_E flame_sensor_connect_state;
+
+    WPA_WIFI_STATUS_E wifi_state;  //wifi开启状态
+    WPA_WIFI_CONNECT_STATUS_E wifi_connect_state; //wifi连接状态
 
     uint8_t rgbled_battery_level;
     uint8_t switch_battery_level;
@@ -84,8 +89,7 @@ typedef struct{
     TIME_SHOW_TYPE_E time_type;
     int clock_type;
 
-    WPA_WIFI_STATUS_E wifi_state;  //wifi开启状态
-    WPA_WIFI_CONNECT_STATUS_E wifi_connect_state; //wifi连接状态
+
 
     int brightness_value;
     int volume_value;
