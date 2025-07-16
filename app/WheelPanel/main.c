@@ -11,11 +11,11 @@
 #include <stdlib.h>
 #include <stdio.h>
 #include "lvgl.h"
-// #include "demos/lv_demos.h"
 #include "font_conf.h"
 #include "page_conf.h"
 #include "device_data.h"
 #include "ble_mesh.h"
+#include "uart_handler.h"
 #include "utils.h"
 #include "http_manager.h"
 #include "audio_player_async.h"
@@ -49,6 +49,7 @@ int main() {
     // http_request_create();
     // 初始化 蓝牙Mesh
     // ble_mesh_init();
+    uart_handler_init();
     // 初始化主界面页面
     init_page_main();
 

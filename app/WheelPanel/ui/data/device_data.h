@@ -36,6 +36,22 @@ typedef enum{
     NOTICE_TYPE_WIN_AND_AUDIO,
 }NOTICE_TYPE_E;
 
+typedef enum {
+    RIDE_MODE_ECO = 0,        // 模式E：Economy / Long Range
+    RIDE_MODE_COMFORT,        // 模式C：Standard / Comfort
+    RIDE_MODE_SPORT,          // 模式F：Sport
+    RIDE_MODE_ASSIST_PUSH,    // 模式A：Assist Push
+    RIDE_MODE_CUSTOM,         // 模式X：Custom
+} RIDE_MODE_E;
+
+static const char* ride_mode_str[] = {
+    "经济",
+    "标准",
+    "运动",
+    "助力",
+    "自定义"
+};
+
 typedef struct{
 
     CONNECT_STATE_E bt_connect_state;

@@ -18,7 +18,7 @@
 #include "device_data.h"
 
 /**
-主机初始化
+主机初始化is_adv_scan_runing
 -设置BLE名称-SET_BLE_NAME-主机为ss_master 从机为ss_device
 -查询BLE名称-GET_BLE_NAME
 -设置自动重连MAC列表SET_BLE_RECONNECT_LIST ssdevice0001/0002

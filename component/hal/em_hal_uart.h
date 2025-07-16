@@ -15,8 +15,9 @@ typedef struct _uart_dev_t{
     int stop;
 } uart_dev_t;
 
-
+// 打开串口(阻塞模式)
 int em_hal_uart_open(uart_dev_t *dev);
+// 关闭串口
 int em_hal_uart_close(int fd);
 int em_hal_uart_write(int fd, const char *send_buf, int lenth);
 int em_hal_uart_read(int fd,char *rcv_buf, int lenth, int timeout);

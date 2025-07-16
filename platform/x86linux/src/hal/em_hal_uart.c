@@ -138,8 +138,11 @@ static int em_hal_setOpt(int fd, int nSpeed, int nBits, char nParity, int nStop)
             break;
     }
     // 设置read读取最小字节数和超时时间
-    newtio.c_cc[VTIME] = 1;     // 读取一个字符等待1*(1/10)s
-    newtio.c_cc[VMIN] = 200;        // 读取字符的最少个数为1
+    newtio.c_cc[VTIME] = 0;     // 读取一个字符等待1*(1/10)s
+    newtio.c_cc[VMIN] = 1;        // 读取字符的最少个数为1
+
+    // newtio.c_cc[VTIME] = 1;     // 读取一个字符等待1*(1/10)s
+    // newtio.c_cc[VMIN] = 0;        // 读取字符的最少个数为1
 
     tcflush(fd,TCIFLUSH);         //清空缓冲区
     if (tcsetattr(fd, TCSANOW, &newtio) != 0)    //激活新设置

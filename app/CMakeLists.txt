@@ -9,6 +9,7 @@ aux_source_directory(${UI_VARIANT}/ui SOURCES)
 aux_source_directory(${UI_VARIANT}/ui/data SOURCES)
 aux_source_directory(${UI_VARIANT}/ui/utils SOURCES)
 aux_source_directory(${UI_VARIANT}/ui/utils/ble SOURCES)
+aux_source_directory(${UI_VARIANT}/ui/utils/uart SOURCES)
 aux_source_directory(${UI_VARIANT}/ui/utils/clock SOURCES)
 aux_source_directory(${UI_VARIANT}/ui/utils/file SOURCES)
 
@@ -20,6 +21,7 @@ target_include_directories(demo PRIVATE
                         ${UI_VARIANT}/ui/data/
                         ${UI_VARIANT}/ui/utils/
                         ${UI_VARIANT}/ui/utils/ble/
+                        ${UI_VARIANT}/ui/utils/uart/
                         ${UI_VARIANT}/ui/utils/clock/
                         ${UI_VARIANT}/ui/utils/file/
                         ${UI_VARIANT}/res/

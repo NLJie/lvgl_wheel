@@ -20,13 +20,16 @@
 #include <time.h>
 #include <sys/time.h>
 
-static lv_obj_t * g_main_bg = NULL;
-static lv_obj_t * bg_img = NULL;
-static lv_obj_t * bg_img1 = NULL;
+lv_obj_t * g_main_bg = NULL;
+lv_obj_t * bg_img = NULL;
+lv_obj_t * bg_img1 = NULL;
 
-static lv_obj_t * top_info_bar = NULL;
-static lv_obj_t * bot_info_bar = NULL;
-static lv_obj_t * ready_img = NULL;
+lv_obj_t * top_info_bar = NULL;
+lv_obj_t * wheel_mode = NULL;
+lv_obj_t * bot_info_bar = NULL;
+lv_obj_t * ready_img = NULL;
+
+
 
 static lv_obj_t * time_label = NULL;
 static lv_obj_t * weather_label = NULL;
@@ -194,7 +197,6 @@ static void time_sync_click_event_cb(lv_event_t * e){
 
 static void screen_click_event_cb(lv_event_t * e){
     printf("screen_click_event_cb\n");
-    lv_img_set_src(bg_img,GET_IMAGE_PATH("g_bg_white.png"));
     sleep_time_count = 0;
 }
 
@@ -397,7 +399,7 @@ static void init_top_status_icon(lv_obj_t *parent){
     static lv_style_t info_style;
     lv_style_init(&info_style);
     // lv_style_set_bg_color(&info_style, lv_color_make(0, 255, 0));   // 背景绿色
-    lv_style_set_bg_opa(&info_style, LV_OPA_COVER);         // 背景不透明
+    lv_style_set_bg_opa(&info_style, LV_OPA_TRANSP);         // 背景不透明
     lv_style_set_radius(&info_style, 0);                    // 无圆角（可选）
     lv_style_set_border_width(&info_style, 0);              // 无边框（可选）
     lv_style_set_pad_all(&info_style, 0);                   // 内边距为0（可选）
@@ -463,11 +465,13 @@ void init_page_main(void)
     lv_img_set_src(bg_img1,GET_IMAGE_PATH("g_bg_gogogo.png"));
     lv_obj_align(bg_img1,LV_ALIGN_CENTER,0,0);    
 
-    lv_obj_t *title = lv_label_create(g_main_bg);
-    obj_font_set(title,FONT_TYPE_LETTER, FONT_SIZE_TEXT_1);
-    lv_obj_set_pos(title, 25, 431);
-    lv_label_set_text(title,"标准");
+    wheel_mode = lv_label_create(g_main_bg);
+    obj_font_set(wheel_mode,FONT_TYPE_LETTER, FONT_SIZE_TEXT_1);
+    lv_obj_set_pos(wheel_mode, 25, 425);
+    lv_obj_set_style_text_color(wheel_mode,APP_COLOR_WHITE,0);
+    lv_label_set_text(wheel_mode,"标准");
     
     init_top_status_icon(g_main_bg);
+    
     init_bot_status_icon(g_main_bg);
 }
