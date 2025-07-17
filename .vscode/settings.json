@@ -7,5 +7,6 @@
         "msg.h": "c",
         "font_conf.h": "c",
         "color_conf.h": "c"
-    }
+    },
+    "C_Cpp.errorSquiggles": "disabled"
 }

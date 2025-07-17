@@ -146,25 +146,28 @@ static void handle_uart_msg()
         }
     }
 
-    if (type == 0x07)
-    {
-        if (value == 0x01)
-        {
-            lv_label_set_text(wheel_mode,"经济");
-        }else if (value == 0x02)
-        {
-            lv_label_set_text(wheel_mode,"标准");
-        }else if (value == 0x03)
-        {
-            lv_label_set_text(wheel_mode,"运动");
-        }else if (value == 0x04)
-        {
-            lv_label_set_text(wheel_mode,"助力");
-        }else if (value == 0x05)
-        {
-            lv_label_set_text(wheel_mode,"X");
-        }
-    }
+    // if (type == 0x07)
+    // {
+    //     if(value >= 1 && value <=5){
+    //         lv_label_set_text(wheel_mode, ride_mode_str[value]);
+    //     }
+    //     // if (value == 0x01)
+    //     // {
+    //     //     lv_label_set_text(wheel_mode,"经济");
+    //     // }else if (value == 0x02)
+    //     // {
+    //     //     lv_label_set_text(wheel_mode,"标准");
+    //     // }else if (value == 0x03)
+    //     // {
+    //     //     lv_label_set_text(wheel_mode,"运动");
+    //     // }else if (value == 0x04)
+    //     // {
+    //     //     lv_label_set_text(wheel_mode,"助力");
+    //     // }else if (value == 0x05)
+    //     // {
+    //     //     lv_label_set_text(wheel_mode,"X");
+    //     // }
+    // }
 
 }
 
