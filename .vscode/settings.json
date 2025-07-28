@@ -6,7 +6,12 @@
         "stdbool.h": "c",
         "msg.h": "c",
         "font_conf.h": "c",
-        "color_conf.h": "c"
+        "color_conf.h": "c",
+        "image_conf.h": "c",
+        "audio_player_async.h": "c",
+        "lv_conf.h": "c",
+        "unistd.h": "c",
+        "ui.h": "c"
     },
     "C_Cpp.errorSquiggles": "disabled"
 }

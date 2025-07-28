@@ -135,6 +135,15 @@ target_link_libraries(lvgl PUBLIC
     lvgl_porting
 )
 
-target_compile_definitions(lvgl PUBLIC
-    -DLV_CONF_INCLUDE_SIMPLE
-)
+# target_compile_definitions(lvgl PUBLIC
+#     -DLV_CONF_INCLUDE_SIMPLE
+# )
+
+
+# set(LV_CONF_PATH_FULL "${CMAKE_SOURCE_DIR}/app/${UI_VARIANT}/lv_conf.h")
+
+# target_compile_definitions(lvgl PUBLIC
+#     -DLV_CONF_PATH=${LV_CONF_PATH_FULL}
+# )
+
+# message(STATUS "LV_CONF_PATH_FULL = ${LV_CONF_PATH_FULL}")
