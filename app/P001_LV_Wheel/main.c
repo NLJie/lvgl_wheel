@@ -21,11 +21,6 @@
 #include "http_manager.h"
 #include "ui/ui.h"
 
-// #include "page_conf.h"
-
-
-
-
 extern void lv_port_disp_init(bool is_disp_orientation);
 extern void lv_port_indev_init(void);
 
@@ -43,15 +38,19 @@ int main() {
     device_state_t *state = get_device_state();
     lv_port_disp_init(state->is_disp_orientation);
     lv_port_indev_init();
+
     // 初始化 字体资源
+
     FONT_INIT();
     // 启动设备定时器
+
     device_timer_init();
+
     // 初始化异步音频播放功能
     init_async_audio_player();
+
     // 启动 WI-FI 控制器
     // wpa_manager_open();
-
 
     // 初始化与SOC 连接的 串口服务
     uart_handler_init();

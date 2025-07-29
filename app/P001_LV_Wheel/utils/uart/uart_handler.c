@@ -12,7 +12,8 @@
 #include "device_data.h"
 
 #include "lvgl.h"
-#include "image_conf.h"
+
+lv_obj_t * ui_Image_bg1;
 
 // extern lv_obj_t * bg_img;
 // extern lv_obj_t * wheel_mode;
@@ -62,7 +63,7 @@ static void read_uart_msg_to_queue()
         msg.len = ret;
         msg.buffer[msg.len] = '\0';
 
-        // 串口接收
+        // 调试
         // printf("receive msg len %d, HEX data:  \n", ret);
         // for (int i = 0; i < ret; i++)
         // {
@@ -96,6 +97,7 @@ static void handle_uart_msg()
     }
     msg.buffer[msg.len] = '\0';
 
+    // 调试
     // printf("receive msg len %d, HEX data:  \n", ret);
     // for (int i = 0; i < msg.len; i++)
     // {
@@ -138,7 +140,6 @@ static void *uart_handlethread_function(void *arg)
     pthread_setcancelstate(PTHREAD_CANCEL_ENABLE, NULL);
     pthread_setcanceltype(PTHREAD_CANCEL_DEFERRED, NULL);
     // 1. 与 MCU 通讯 初始化
-    // init_at_device();
     while (1)
     {
         handle_uart_msg();
@@ -179,4 +180,5 @@ void uart_handler_init()
         printf("Error: pthread_create() uart_mesh_handlethread failed\n");
         return;
     }
+
 }

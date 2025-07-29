@@ -11,7 +11,10 @@
         "audio_player_async.h": "c",
         "lv_conf.h": "c",
         "unistd.h": "c",
-        "ui.h": "c"
+        "ui.h": "c",
+        "uart_handler.h": "c",
+        "http_manager.h": "c",
+        "ui_helpers.h": "c"
     },
     "C_Cpp.errorSquiggles": "disabled"
 }
