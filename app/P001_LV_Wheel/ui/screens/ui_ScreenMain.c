@@ -457,12 +457,12 @@ void ui_ScreenMain_screen_init(void)
     lv_obj_set_style_text_font(ui_Label_odo, &ui_font_MiSansBoldFont20, LV_PART_MAIN | LV_STATE_DEFAULT);
 
     ui_Label_odo_value = lv_label_create(ui_Container_odo);
-    lv_obj_set_width(ui_Label_odo_value, 70);
+    lv_obj_set_width(ui_Label_odo_value, 80);
     lv_obj_set_height(ui_Label_odo_value, LV_SIZE_CONTENT);    /// 1
     lv_obj_set_x(ui_Label_odo_value, 5);
     lv_obj_set_y(ui_Label_odo_value, 0);
     lv_obj_set_align(ui_Label_odo_value, LV_ALIGN_CENTER);
-    lv_label_set_text(ui_Label_odo_value, "456");
+    lv_label_set_text(ui_Label_odo_value, "00000");
     ui_object_set_themeable_style_property(ui_Label_odo_value, LV_PART_MAIN | LV_STATE_DEFAULT, LV_STYLE_TEXT_COLOR,
                                            _ui_theme_color_normal);
     ui_object_set_themeable_style_property(ui_Label_odo_value, LV_PART_MAIN | LV_STATE_DEFAULT, LV_STYLE_TEXT_OPA,
@@ -506,12 +506,12 @@ void ui_ScreenMain_screen_init(void)
     lv_obj_set_style_text_font(ui_Label_trip, &ui_font_MiSansBoldFont20, LV_PART_MAIN | LV_STATE_DEFAULT);
 
     ui_Label_trip_value = lv_label_create(ui_Container_trip);
-    lv_obj_set_width(ui_Label_trip_value, 70);
+    lv_obj_set_width(ui_Label_trip_value, 80);
     lv_obj_set_height(ui_Label_trip_value, LV_SIZE_CONTENT);    /// 1
     lv_obj_set_x(ui_Label_trip_value, 5);
     lv_obj_set_y(ui_Label_trip_value, 0);
     lv_obj_set_align(ui_Label_trip_value, LV_ALIGN_CENTER);
-    lv_label_set_text(ui_Label_trip_value, "0.7");
+    lv_label_set_text(ui_Label_trip_value, "000.0");
     ui_object_set_themeable_style_property(ui_Label_trip_value, LV_PART_MAIN | LV_STATE_DEFAULT, LV_STYLE_TEXT_COLOR,
                                            _ui_theme_color_normal);
     ui_object_set_themeable_style_property(ui_Label_trip_value, LV_PART_MAIN | LV_STATE_DEFAULT, LV_STYLE_TEXT_OPA,
@@ -1087,7 +1087,7 @@ void ui_ScreenMain_screen_init(void)
     lv_obj_set_x(ui_Button_test, 213);
     lv_obj_set_y(ui_Button_test, 145);
     lv_obj_set_align(ui_Button_test, LV_ALIGN_CENTER);
-    lv_obj_add_flag(ui_Button_test, LV_OBJ_FLAG_CHECKABLE | LV_OBJ_FLAG_SCROLL_ON_FOCUS);     /// Flags
+    lv_obj_add_flag(ui_Button_test, LV_OBJ_FLAG_HIDDEN | LV_OBJ_FLAG_CHECKABLE | LV_OBJ_FLAG_SCROLL_ON_FOCUS);     /// Flags
     lv_obj_clear_flag(ui_Button_test, LV_OBJ_FLAG_SCROLLABLE);      /// Flags
 
     lv_obj_add_event_cb(ui_Button_test, ui_event_Button_test, LV_EVENT_ALL, NULL);

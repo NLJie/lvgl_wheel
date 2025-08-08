@@ -1,6 +1,6 @@
 /*
- * @Author: xiaozhi 
- * @Date: 2024-09-24 23:32:16 
+ * @Author: xiaozhi
+ * @Date: 2024-09-24 23:32:16
  * @Last Modified by: xiaozhi
  * @Last Modified time: 2024-09-25 02:49:32
  */
@@ -43,7 +43,6 @@ int main() {
 
     FONT_INIT();
     // 启动设备定时器
-
     device_timer_init();
 
     // 初始化异步音频播放功能
@@ -58,7 +57,9 @@ int main() {
     ui_init();
 
     while (1) {
+        pthread_mutex_lock(&mutex_lvgl);
         time_till_next = lv_task_handler();
+        pthread_mutex_unlock(&mutex_lvgl);
 		usleep(time_till_next*1000);
     }
 

@@ -235,23 +235,23 @@ int em_hal_uart_open(uart_dev_t *dev)
     }
     // 设置串口阻塞， 0：阻塞， FNDELAY：非阻塞
     if (fcntl(fd, F_SETFL, 0) < 0)    //阻塞
-         printf("fcntl failed!");
+         printf("fcntl failed!\n");
 
     if (isatty(fd) == 0)
     {
-        printf("standard input is not a terminal device");
+        printf("standard input is not a terminal device\n");
         close(fd);
         return -1;
     }
     else
     {
-        printf("is a tty success!");
+        printf("is a tty success!\n");
     }
 
     // 设置串口参数
     if (em_hal_setOpt(fd, dev->speed, dev->bits, dev->parity, dev->stop)== -1)    //设置8位数据位、1位停止位、无校验
     {
-        printf("Set opt Error");
+        printf("Set opt Error\n");
         close(fd);
         return -1;
     }
